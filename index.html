@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snipease | Easily Build Your Website</title>
+  <meta name="description" content="Snipease makes it easy to build your business website through one clear process. Select your website type and book by phone or email.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>#page-loader { display: none; }</style></noscript>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="page-loader" class="page-loader" aria-hidden="true">
+    <div class="loader-shell">
+      <img src="logo.jpeg" alt="" class="loader-logo">
+      <div class="loader-ring" aria-hidden="true"></div>
+      <p>Buffering layout...</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-shell">
+      <a href="#top" class="brand">
+        <img src="logo.jpeg" alt="Snipease logo" class="brand-logo">
+        <span class="brand-name" aria-hidden="true">snipease</span>
+        <span class="sr-only">Snipease</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="main-nav" aria-label="Main Navigation">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#book">Book</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content reveal" data-reveal="up">
+          <p class="eyebrow">Snipease Website Studio</p>
+          <h1>Build your website easily through Snipease.</h1>
+          <p class="hero-copy">
+            Share your business idea, choose your website type, and our team turns it into a clean modern website that helps you get clients.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book">Start Your Booking</a>
+            <a class="btn btn-secondary" href="tel:+917838833000">Call +91 78388 33000</a>
+          </div>
+          <div class="hero-tags" aria-label="Snipease benefits">
+            <span>Minimal design</span>
+            <span>Fast delivery</span>
+            <span>Client-focused build</span>
+          </div>
+        </div>
+        <aside class="hero-buffer reveal" data-reveal="right" aria-label="Live preview panel">
+          <p class="buffer-label">Live Build Preview</p>
+          <div class="buffer-line buffer-line-lg"></div>
+          <div class="buffer-line"></div>
+          <div class="buffer-line"></div>
+          <div class="buffer-line buffer-line-sm"></div>
+          <p class="buffer-pill">Buffering your website layout...</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Major Services</p>
+        <h2>Core web services we provide</h2>
+      </div>
+      <div class="card-grid stagger-group">
+        <article class="service-card reveal" data-reveal="up">
+          <h3>Business Websites</h3>
+          <p>Professional multi-page websites designed to convert visitors into clients.</p>
+          <button class="plan-select" type="button" data-plan="Business Websites">Choose</button>
+        </article>
+        <article class="service-card reveal" data-reveal="up">
+          <h3>E-Commerce Stores</h3>
+          <p>Online stores focused on product clarity, checkout flow, and sales growth.</p>
+          <button class="plan-select" type="button" data-plan="E-Commerce Stores">Choose</button>
+        </article>
+        <article class="service-card reveal" data-reveal="up">
+          <h3>Portfolio &amp; Content Platforms</h3>
+          <p>Clean portfolio and content-driven websites for creators, brands, and agencies.</p>
+          <button class="plan-select" type="button" data-plan="Portfolio & Content Platforms">Choose</button>
+        </article>
+        <article class="service-card reveal" data-reveal="up">
+          <h3>Custom Web Applications</h3>
+          <p>Tailored web app solutions built around your exact workflow and business goals.</p>
+          <button class="plan-select" type="button" data-plan="Custom Web Applications">Choose</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">How It Works</p>
+        <h2>Simple 3-step flow</h2>
+      </div>
+      <ol class="steps stagger-group">
+        <li class="reveal" data-reveal="up">
+          <h3>1. Share your requirement</h3>
+          <p>Give us your business details and your website goal.</p>
+        </li>
+        <li class="reveal" data-reveal="up">
+          <h3>2. Select website type</h3>
+          <p>Pick the website format that fits your need and timeline.</p>
+        </li>
+        <li class="reveal" data-reveal="up">
+          <h3>3. We connect and start</h3>
+          <p>We contact you by call or email and begin your build quickly.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section book" id="book">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Book Your Project</p>
+        <h2>Send your request now</h2>
+      </div>
+      <div class="book-layout">
+        <form id="booking-form" class="booking-form reveal" data-reveal="left" novalidate>
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+
+          <label for="business">Business Name</label>
+          <input id="business" name="business" type="text" autocomplete="organization" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 78388 33000 / +91 95820 91123" required>
+
+          <label for="websiteType">Website Type</label>
+          <select id="websiteType" name="websiteType" required>
+            <option value="">Select a website type</option>
+            <option value="Business Websites">Business Websites</option>
+            <option value="E-Commerce Stores">E-Commerce Stores</option>
+            <option value="Portfolio & Content Platforms">Portfolio & Content Platforms</option>
+            <option value="Custom Web Applications">Custom Web Applications</option>
+          </select>
+
+          <label for="timeline">Preferred Timeline</label>
+          <select id="timeline" name="timeline" required>
+            <option value="">Select timeline</option>
+            <option value="As soon as possible">As soon as possible</option>
+            <option value="Within 2 weeks">Within 2 weeks</option>
+            <option value="Within 1 month">Within 1 month</option>
+          </select>
+
+          <label for="message">Project Notes</label>
+          <textarea id="message" name="message" rows="4" placeholder="Write your page needs, style, or features." required></textarea>
+
+          <fieldset>
+            <legend>Preferred Contact Method</legend>
+            <label class="inline"><input type="radio" name="contactMethod" value="Phone Call" checked> Phone Call</label>
+            <label class="inline"><input type="radio" name="contactMethod" value="Email"> Email</label>
+          </fieldset>
+
+          <button class="btn btn-primary" type="submit">Send Booking Request</button>
+          <p class="form-note">Submitting sends your request directly to Snipease inbox. First test may require one-time FormSubmit email activation.</p>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-card reveal" data-reveal="right" id="contact">
+          <h3>Direct Contact</h3>
+          <p>Need a quick response? Contact Snipease directly.</p>
+          <a href="tel:+917838833000">Call: +91 78388 33000</a>
+          <a href="tel:+919582091123">Call: +91 95820 91123</a>
+          <a href="mailto:snipease@gmail.com">Email: snipease@gmail.com</a>
+          <p class="small">Future services: video editing and graphic design.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal" data-reveal="up">
+    <p>&copy; <span id="year"></span> Snipease. Easy website building for growing businesses.</p>
+  </footer>
+</body>
+</html>
