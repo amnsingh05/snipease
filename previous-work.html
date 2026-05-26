@@ -4,9 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snipease | Previous Work</title>
+  <meta name="description" content="Previous website project by Snipease: Aarash Industries e-commerce experience with responsive shopping and checkout flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="logo.jpeg">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-shell">
+      <a href="index.html#home" class="brand">
+        <span class="brand-name" aria-hidden="true">snipease</span>
+        <span class="sr-only">Snipease</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+      <nav id="main-nav" class="main-nav" aria-label="Main Navigation">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="previous-work.html">Our Previous Work</a>
+        <a href="index.html#book">Book</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pw-main">
+    <section class="section pw-hero reveal" data-reveal="up">
+      <p class="eyebrow">Case Study</p>
+      <h1>Aarash Industries E-Commerce Website</h1>
+      <p>
+        We designed and optimized a modern cookware storefront experience with product browsing,
+        secure cart flow, and conversion-focused checkout journey.
+      </p>
+      <a class="btn btn-primary" href="index.html#book">Book Similar Project</a>
+    </section>
+
+    <section class="section pw-content">
+      <div class="pw-gallery reveal" data-reveal="left">
+        <figure class="pw-shot">
+          <img src="work-aarash-hero.jpeg" alt="Aarash Industries homepage hero section">
+          <figcaption>Homepage Banner & Navigation Experience</figcaption>
+        </figure>
+        <figure class="pw-shot">
+          <img src="work-aarash-products.jpeg" alt="Aarash Industries product listing page">
+          <figcaption>Product Listing Grid with Offers & Pricing</figcaption>
+        </figure>
+        <figure class="pw-shot">
+          <img src="work-aarash-bag.jpeg" alt="Aarash Industries bag and checkout page">
+          <figcaption>Bag, Offers, and Checkout Flow</figcaption>
+        </figure>
+      </div>
+
+      <aside class="pw-features reveal" data-reveal="right">
+        <h2>Project Features Delivered</h2>
+        <ul>
+          <li>Fast Loading Speed</li>
+          <li>Fully Responsive Design</li>
+          <li>Modern &amp; Professional UI/UX</li>
+          <li>Secure &amp; Reliable Website</li>
+          <li>E-Commerce Ready</li>
+          <li>Conversion Focused Layout</li>
+          <li>Easy Contact &amp; Lead Forms</li>
+          <li>Mobile &amp; Cross-Browser Compatible</li>
+          <li>Payment Gateway Integration</li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Snipease. Previous work showcase.</p>
+  </footer>
 </body>
 </html>
