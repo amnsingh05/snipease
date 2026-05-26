@@ -15,6 +15,7 @@ const commentStatus = document.getElementById("comment-status");
 const contactEmail = "snipease@gmail.com";
 const submitEndpoint = `https://formsubmit.co/ajax/${contactEmail}`;
 const commentsStorageKey = "snipease_comments_v1";
+const makeCommentId = () => `c_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
 if (yearTarget) {
   yearTarget.textContent = String(new Date().getFullYear());
@@ -175,18 +176,72 @@ if (form) {
   });
 }
 
+const normalizeComments = (comments) => {
+  let changed = false;
+  const normalized = [];
+
+  comments.forEach((item, index) => {
+    if (!item || typeof item !== "object") {
+      changed = true;
+      return;
+    }
+
+    const id =
+      typeof item.id === "string" && item.id.trim()
+        ? item.id.trim()
+        : `legacy_${index}_${makeCommentId()}`;
+    const name = String(item.name || "").trim() || "Anonymous";
+    const role = String(item.role || "").trim() || "Client";
+    const text = String(item.text || "").trim();
+    const likes = Number.isFinite(Number(item.likes)) ? Math.max(0, Number(item.likes)) : 0;
+    const dislikes = Number.isFinite(Number(item.dislikes)) ? Math.max(0, Number(item.dislikes)) : 0;
+
+    if (!item.id || item.name !== name || item.role !== role || item.likes !== likes || item.dislikes !== dislikes) {
+      changed = true;
+    }
+
+    if (text) {
+      normalized.push({ id, name, role, text, likes, dislikes });
+    } else {
+      changed = true;
+    }
+  });
+
+  return { normalized, changed };
+};
+
 const renderComments = (comments) => {
   if (!commentList) {
     return;
   }
 
   commentList.innerHTML = "";
+
+  if (!comments.length) {
+    const empty = document.createElement("li");
+    empty.className = "comment-empty";
+    empty.textContent = "No comments yet. Be the first one to share feedback.";
+    commentList.appendChild(empty);
+    return;
+  }
+
   comments.forEach((item) => {
     const li = document.createElement("li");
     const safeName = escapeHtml(item.name);
     const safeRole = escapeHtml(item.role || "Client");
     const safeText = escapeHtml(item.text);
-    li.innerHTML = `<strong>${safeName}</strong><div class="meta">${safeRole}</div><p>${safeText}</p>`;
+    const safeId = escapeHtml(item.id);
+
+    li.innerHTML = `
+      <strong>${safeName}</strong>
+      <div class="meta">${safeRole}</div>
+      <p>${safeText}</p>
+      <div class="comment-actions">
+        <button type="button" class="comment-action" data-action="like" data-id="${safeId}" aria-label="Like this comment">👍 <span>${item.likes}</span></button>
+        <button type="button" class="comment-action" data-action="dislike" data-id="${safeId}" aria-label="Dislike this comment">👎 <span>${item.dislikes}</span></button>
+        <button type="button" class="comment-action comment-delete" data-action="delete" data-id="${safeId}" aria-label="Delete this comment">Delete</button>
+      </div>
+    `;
     commentList.appendChild(li);
   });
 };
@@ -195,7 +250,15 @@ const loadComments = () => {
   try {
     const raw = localStorage.getItem(commentsStorageKey);
     const comments = raw ? JSON.parse(raw) : [];
-    return Array.isArray(comments) ? comments : [];
+    if (!Array.isArray(comments)) {
+      return [];
+    }
+
+    const { normalized, changed } = normalizeComments(comments);
+    if (changed) {
+      saveComments(normalized);
+    }
+    return normalized;
   } catch {
     return [];
   }
@@ -212,6 +275,57 @@ const saveComments = (comments) => {
 if (commentList) {
   const initialComments = loadComments();
   renderComments(initialComments);
+
+  commentList.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const actionButton = target.closest("button[data-action]");
+    if (!actionButton) {
+      return;
+    }
+
+    const action = actionButton.getAttribute("data-action");
+    const id = actionButton.getAttribute("data-id");
+    if (!action || !id) {
+      return;
+    }
+
+    const comments = loadComments();
+    const index = comments.findIndex((comment) => comment.id === id);
+    if (index < 0) {
+      return;
+    }
+
+    if (action === "like") {
+      comments[index].likes += 1;
+      if (commentStatus) {
+        commentStatus.textContent = "You liked this comment.";
+      }
+    } else if (action === "dislike") {
+      comments[index].dislikes += 1;
+      if (commentStatus) {
+        commentStatus.textContent = "You disliked this comment.";
+      }
+    } else if (action === "delete") {
+      const approved = window.confirm("Delete this comment?");
+      if (!approved) {
+        return;
+      }
+      comments.splice(index, 1);
+      if (commentStatus) {
+        commentStatus.textContent = "Comment deleted.";
+      }
+    } else {
+      return;
+    }
+
+    const recent = comments.slice(0, 12);
+    saveComments(recent);
+    renderComments(recent);
+  });
 }
 
 if (commentForm) {
@@ -226,9 +340,12 @@ if (commentForm) {
     const data = Object.fromEntries(new FormData(commentForm).entries());
     const comments = loadComments();
     comments.unshift({
+      id: makeCommentId(),
       name: String(data.commentName || "").trim(),
       role: String(data.commentRole || "").trim(),
-      text: String(data.commentText || "").trim()
+      text: String(data.commentText || "").trim(),
+      likes: 0,
+      dislikes: 0
     });
 
     const recent = comments.slice(0, 12);
