@@ -719,15 +719,49 @@ main {
 
 .contact-card a {
   display: block;
-  margin: 0.4rem 0;
+  width: 100%;
+  margin: 0.55rem 0;
   text-decoration: none;
   color: #e4ecff;
   font-weight: 700;
+  font-size: 1.06rem;
+  line-height: 1.45;
 }
 
 .contact-card a:hover,
 .contact-card a:focus-visible {
   color: #ffffff;
+}
+
+.contact-card a.external-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.contact-card a.external-link .link-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(173, 187, 233, 0.45);
+  background: rgba(93, 111, 240, 0.16);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.contact-card a.external-link .link-arrow {
+  margin-left: 0.1rem;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-card a.external-link:hover .link-arrow,
+.contact-card a.external-link:focus-visible .link-arrow {
+  opacity: 1;
+  transform: translate(2px, -1px);
 }
 
 .contact-card .small {
