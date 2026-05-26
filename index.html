@@ -22,51 +22,97 @@
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="header-shell">
-      <a href="#top" class="brand">
-        <img src="logo.jpeg" alt="Snipease logo" class="brand-logo">
-        <span class="brand-name" aria-hidden="true">snipease</span>
-        <span class="sr-only">Snipease</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
-      <nav id="main-nav" class="main-nav" aria-label="Main Navigation">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#book">Book</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-content reveal" data-reveal="up">
-          <p class="eyebrow">Snipease Website Studio</p>
-          <h1>Build your website easily through Snipease.</h1>
-          <p class="hero-copy">
-            Share your business idea, choose your website type, and our team turns it into a clean modern website that helps you get clients.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#book">Start Your Booking</a>
-            <a class="btn btn-secondary" href="tel:+917838833000">Call +91 78388 33000</a>
+  <main id="home">
+    <section class="hero-shell reveal" data-reveal="up">
+      <div class="screen-frame">
+        <div class="screen-top">
+          <div class="screen-brand">
+            <img src="logo.jpeg" alt="" class="screen-logo">
+            <span>snipease</span>
           </div>
-          <div class="hero-tags" aria-label="Snipease benefits">
-            <span>Minimal design</span>
-            <span>Fast delivery</span>
-            <span>Client-focused build</span>
+          <nav class="screen-nav" aria-label="Hero Navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="previous-work.html">Our Previous Work</a>
+            <a href="#book">Book</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+
+        <div class="screen-main">
+          <div class="screen-copy reveal" data-reveal="left">
+            <h1>We Design Websites That <span>Drive Results</span></h1>
+            <p>
+              We create modern, high-performing websites that help businesses stand out
+              and scale online.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#book">LET&apos;S BUILD</a>
+              <a class="btn btn-secondary" href="tel:+917838833000">CALL NOW</a>
+            </div>
+          </div>
+
+          <div class="screen-widgets reveal" data-reveal="right">
+            <article class="metric-card">
+              <h3>+120%</h3>
+              <p>Increase in Leads</p>
+              <div class="mini-chart" aria-hidden="true"></div>
+            </article>
+            <article class="metric-card">
+              <h3>98%</h3>
+              <p>Client Satisfaction</p>
+              <div class="mini-progress" aria-hidden="true"><span></span></div>
+            </article>
+            <article class="preview-card">
+              <p>Elevate<br>Your Brand<br>Online</p>
+              <span>Deliver More</span>
+            </article>
           </div>
         </div>
-        <aside class="hero-buffer reveal" data-reveal="right" aria-label="Live preview panel">
-          <p class="buffer-label">Live Build Preview</p>
-          <div class="buffer-line buffer-line-lg"></div>
-          <div class="buffer-line"></div>
-          <div class="buffer-line"></div>
-          <div class="buffer-line buffer-line-sm"></div>
-          <p class="buffer-pill">Buffering your website layout...</p>
-        </aside>
+
       </div>
+    </section>
+
+    <section class="value-row reveal" data-reveal="up" id="about">
+      <article>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation">
+            <path d="M14.5 9.5l-4 4" />
+            <path d="M7 17l4-1 7-7a2 2 0 0 0-3-3l-7 7-1 4Z" />
+            <path d="M9 15l-2 2" />
+          </svg>
+        </span>
+        <h3>Fast Delivery</h3>
+      </article>
+      <article>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation">
+            <circle cx="12" cy="8.5" r="4.5" />
+            <path d="M9.5 13.5 8 21l4-2 4 2-1.5-7.5" />
+          </svg>
+        </span>
+        <h3>Premium Quality</h3>
+      </article>
+      <article>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation">
+            <path d="M4 13a8 8 0 0 1 16 0" />
+            <rect x="3" y="12" width="4" height="7" rx="2" />
+            <rect x="17" y="12" width="4" height="7" rx="2" />
+          </svg>
+        </span>
+        <h3>Dedicated Support</h3>
+      </article>
+      <article>
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation">
+            <path d="M6 10h12v9H6z" />
+            <path d="M9 10V7a3 3 0 0 1 6 0v3" />
+          </svg>
+        </span>
+        <h3>Reliable &amp; Secure</h3>
+      </article>
     </section>
 
     <section class="section" id="services">
@@ -98,25 +144,20 @@
       </div>
     </section>
 
-    <section class="section" id="process">
+    <section class="section work-grid" id="work">
       <div class="section-head reveal" data-reveal="up">
-        <p class="eyebrow">How It Works</p>
-        <h2>Simple 3-step flow</h2>
+        <p class="eyebrow">Our Previous Work</p>
+        <h2>Web projects we already delivered</h2>
       </div>
-      <ol class="steps stagger-group">
-        <li class="reveal" data-reveal="up">
-          <h3>1. Share your requirement</h3>
-          <p>Give us your business details and your website goal.</p>
-        </li>
-        <li class="reveal" data-reveal="up">
-          <h3>2. Select website type</h3>
-          <p>Pick the website format that fits your need and timeline.</p>
-        </li>
-        <li class="reveal" data-reveal="up">
-          <h3>3. We connect and start</h3>
-          <p>We contact you by call or email and begin your build quickly.</p>
-        </li>
-      </ol>
+      <article class="work-card reveal" data-reveal="left">
+        <h3>Design + Strategy</h3>
+        <p>We map your website around conversions, brand trust, and clear user flow.</p>
+      </article>
+      <article class="work-card reveal" data-reveal="right">
+        <h3>Build + Optimization</h3>
+        <p>From wireframe to launch, we craft fast pages with smooth performance and SEO-ready structure.</p>
+      </article>
+      <a class="work-link-btn reveal" data-reveal="up" href="previous-work.html">View Full Previous Work</a>
     </section>
 
     <section class="section book" id="book">
@@ -177,6 +218,33 @@
           <a href="mailto:snipease@gmail.com">Email: snipease@gmail.com</a>
           <p class="small">Future services: video editing and graphic design.</p>
         </aside>
+      </div>
+    </section>
+
+    <section class="section comments" id="comments">
+      <div class="section-head reveal" data-reveal="up">
+        <p class="eyebrow">Client Comments</p>
+        <h2>Share your feedback about our services</h2>
+      </div>
+      <div class="comments-layout">
+        <form id="comment-form" class="comment-form reveal" data-reveal="left" novalidate>
+          <label for="commentName">Name</label>
+          <input id="commentName" name="commentName" type="text" required>
+
+          <label for="commentRole">Business / Role</label>
+          <input id="commentRole" name="commentRole" type="text" placeholder="Optional">
+
+          <label for="commentText">Comment</label>
+          <textarea id="commentText" name="commentText" rows="4" placeholder="Write your feedback here..." required></textarea>
+
+          <button class="btn btn-primary" type="submit">Post Comment</button>
+          <p id="comment-status" class="comment-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="comment-list-wrap reveal" data-reveal="right">
+          <h3>Recent Comments</h3>
+          <ul id="comment-list" class="comment-list"></ul>
+        </div>
       </div>
     </section>
   </main>

@@ -8,9 +8,13 @@ const planButtons = document.querySelectorAll(".plan-select");
 const bookingSection = document.getElementById("book");
 const pageLoader = document.getElementById("page-loader");
 const submitButton = form ? form.querySelector("button[type='submit']") : null;
+const commentForm = document.getElementById("comment-form");
+const commentList = document.getElementById("comment-list");
+const commentStatus = document.getElementById("comment-status");
 
 const contactEmail = "snipease@gmail.com";
 const submitEndpoint = `https://formsubmit.co/ajax/${contactEmail}`;
+const commentsStorageKey = "snipease_comments_v1";
 
 if (yearTarget) {
   yearTarget.textContent = String(new Date().getFullYear());
@@ -168,5 +172,72 @@ if (form) {
     }
 
     // Keeps old behavior available as fallback for users if AJAX fails.
+  });
+}
+
+const renderComments = (comments) => {
+  if (!commentList) {
+    return;
+  }
+
+  commentList.innerHTML = "";
+  comments.forEach((item) => {
+    const li = document.createElement("li");
+    const safeName = escapeHtml(item.name);
+    const safeRole = escapeHtml(item.role || "Client");
+    const safeText = escapeHtml(item.text);
+    li.innerHTML = `<strong>${safeName}</strong><div class="meta">${safeRole}</div><p>${safeText}</p>`;
+    commentList.appendChild(li);
+  });
+};
+
+const loadComments = () => {
+  try {
+    const raw = localStorage.getItem(commentsStorageKey);
+    const comments = raw ? JSON.parse(raw) : [];
+    return Array.isArray(comments) ? comments : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveComments = (comments) => {
+  try {
+    localStorage.setItem(commentsStorageKey, JSON.stringify(comments));
+  } catch {
+    // Ignore storage failures quietly.
+  }
+};
+
+if (commentList) {
+  const initialComments = loadComments();
+  renderComments(initialComments);
+}
+
+if (commentForm) {
+  commentForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!commentForm.checkValidity()) {
+      commentForm.reportValidity();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(commentForm).entries());
+    const comments = loadComments();
+    comments.unshift({
+      name: String(data.commentName || "").trim(),
+      role: String(data.commentRole || "").trim(),
+      text: String(data.commentText || "").trim()
+    });
+
+    const recent = comments.slice(0, 12);
+    saveComments(recent);
+    renderComments(recent);
+    commentForm.reset();
+
+    if (commentStatus) {
+      commentStatus.textContent = "Thanks! Your comment has been posted.";
+    }
   });
 }
