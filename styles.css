@@ -1112,3 +1112,149 @@ main {
     transition: none !important;
   }
 }
+
+/* ========================= */
+/* PREVIOUS WORK STRUCTURE */
+/* ========================= */
+
+.pw-projects {
+  padding: 2rem 0 4rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.pw-project-card {
+  border-radius: 24px;
+  border: 1px solid rgba(166, 178, 226, 0.24);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 22, 38, 0.96),
+      rgba(10, 14, 26, 0.96)
+    );
+
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
+}
+
+.pw-project-top {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.2rem;
+  padding: 1.4rem;
+}
+
+.pw-project-info h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.4rem 0 0.8rem;
+}
+
+.pw-description {
+  color: #bcc8ea;
+  max-width: 60ch;
+  line-height: 1.7;
+}
+
+.pw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.pw-tags span {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(108, 124, 255, 0.14);
+  border: 1px solid rgba(167, 181, 236, 0.22);
+  color: #dfe7ff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pw-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.4rem;
+}
+
+.pw-project-features {
+  border-radius: 18px;
+  border: 1px solid rgba(167, 181, 236, 0.18);
+  background: rgba(15, 20, 34, 0.78);
+  padding: 1rem;
+}
+
+.pw-project-features h3 {
+  margin-bottom: 1rem;
+}
+
+.pw-project-features ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.pw-project-features li {
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(22, 30, 52, 0.72);
+  border: 1px solid rgba(158, 173, 224, 0.16);
+  color: #dfe7ff;
+}
+
+/* IMAGES GRID */
+
+.pw-images-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0 1.4rem 1.4rem;
+}
+
+.pw-image-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(162, 177, 228, 0.2);
+  background: rgba(12, 17, 31, 0.9);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.pw-image-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(190, 202, 245, 0.45);
+}
+
+.pw-image-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.pw-image-card figcaption {
+  padding: 0.9rem;
+  color: #dfe6ff;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+/* MOBILE */
+
+@media (max-width: 980px) {
+
+  .pw-project-top {
+    grid-template-columns: 1fr;
+  }
+
+  .pw-images-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
